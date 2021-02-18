@@ -16,12 +16,12 @@ void dfs(int start){
 	visit[start]=true;
 	
 	int next=v[start][0];
-	if(visit[next]==false) dfs(next);
-	else if(check[next]==false){
+	if(visit[next]==false) dfs(next); // 방문하지 않았으면 탐색
+	else if(check[next]==false){// 방문 했는데 사이클을 만드는 중이다?
 		for(int i=next;i!=start;i=v[i][0]){
-			
+			//노드 전까지 순환 돈다. dfs이기 때문에 4-7-6-8 순이면 8에서 4까지 간다음에 다시 4에서 for문이 실행된다.
 			cnt++;
-			//cout<<"i = "<<i<<" next= "<<next<<endl;
+			
 		}
 		cnt++;
 	}
@@ -37,7 +37,7 @@ int main(){
 		cin>>n;
 		for(int i=1;i<=n;i++){
 			int u;
-			cin>>u;
+			scanf("%d",&u);
 			v[i].push_back(u);
 		}
 		
